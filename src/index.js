@@ -6,6 +6,7 @@ import 'babel-core/polyfill';
 import './index.scss';
 
 
-import {app} from './app'
+import app from './app'
 
 console.log(app);
+//angular.bootstrap(document, [app.name]);

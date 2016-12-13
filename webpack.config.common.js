@@ -28,7 +28,7 @@ module.exports = {
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.s?css$/, loader: 'style!css?importLoaders=2&sourceMap!postcss-loader?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
-      { test: /\.html/, loader: 'raw' },
+      { test: /\.html$/, loader: 'html-loader' },
       { test: /\.(png|svg|jpg|jpeg)$/, loader: 'url-loader',
         query: {
           limit: 8192,
@@ -39,13 +39,7 @@ module.exports = {
   },
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
   resolve: {
-    alias: {
-      // Alias react to our copy of react to prevent loading two copies of react
-      // when react is specified as an upstream peer-dependency
-      react: path.join(__dirname, 'node_modules', 'react'),
-      "react-dom": path.join(__dirname, 'node_modules', 'react-dom')
-    },
-    modulesDirectories: ['node_modules'],
+    modulesDirectories: ['node_modules', 'src'],
     extensions: ['', '.json', '.js', '.jsx', '.css', '.scss', '.png', '.svg', '.jpg', '.jpeg']
   },
 };

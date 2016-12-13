@@ -16,17 +16,15 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 
-app.use(express.static(path.join(__dirname, 'static')));
+//app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-// app.get('/business', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/business.html'));
-// });
-
 
 app.use('/public', express.static('public'));
+
 app.listen(PORT, 'localhost', function(err) {
   if (err) {
     console.log(err);
