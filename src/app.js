@@ -26,19 +26,22 @@
 
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import homeController from 'home/home';
+//import './directives-module';
+import './components'
 //import todoFactory from 'factories/todo-factory';
 //import todosController from 'todos/todos';
 
-const app = angular.module('app', [uiRouter]);
+const app = angular.module('app', [uiRouter, 'app.directivesModule']);
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-        .state('todos', {
+        .state('home', {
             url: '/',
-            template: require('todos/todos.html'),
-            //controller: todosController
+            template: require('home/home.html'),
+            controller: homeController
         })
         // .state('about', {
         //     url: '/about',
