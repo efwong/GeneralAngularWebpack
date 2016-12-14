@@ -1,11 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const user = require('./user');
 
-//router.post('/save');
-
-router.post('/save', function(req, res){
-  console.log('hello');
-  res.send('processing the login form!');
-});
+router.use('/user', user)
 
 module.exports = router;

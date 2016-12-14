@@ -1,39 +1,31 @@
-let path = require('path');
-let express = require('express');
-let webpack = require('webpack');
-let config = require('./webpack.config.dev');
-let bodyParser = require('body-parser')
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const config = require('./webpack.config.dev');
+const bodyParser = require('body-parser')
+const routes = require('./server/routes');
+const app = express();
+const compiler = webpack(config);
 
-let router = express.Router();
+const PORT = process.env.PORT || 3020;
 
-var routes = require('./server/routes');
-
-let app = express();
-let compiler = webpack(config);
-
-let PORT = process.env.PORT || 3020;
-app.use(bodyParser.json());
+// load webpack middleware
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
 }));
-
 app.use(require('webpack-hot-middleware')(compiler));
 
-
-//app.use(express.static(path.join(__dirname, 'public')));
-
 app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.use('/user', routes);
-// router.post('/save', function(req, res){
-//   console.log('hello');
-//   res.send('processing the login form!');
-// });
 
+// setup routes
+app.use(bodyParser.json());
+app.use('/', routes);
 
+// setup public directory
 app.use('/public', express.static('public'));
 
 app.listen(PORT, 'localhost', function(err) {
