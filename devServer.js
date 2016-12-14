@@ -3,7 +3,7 @@ const express = require('express');
 const webpack = require('webpack');
 const config = require('./webpack.config.dev');
 const bodyParser = require('body-parser')
-const routes = require('./server/routes');
+const loadRoutes = require('./server/routes');
 const app = express();
 const compiler = webpack(config);
 
@@ -16,19 +16,20 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('/*', function(req, res) {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 
 // setup routes
 app.use(bodyParser.json());
-app.use('/', routes);
+//app.use('/', routes);
+loadRoutes(app);
 
 // setup public directory
 app.use('/public', express.static('public'));
 
-app.listen(PORT, 'localhost', function(err) {
+app.listen(PORT, 'localhost', (err) => {
   if (err) {
     console.log(err);
     return;
