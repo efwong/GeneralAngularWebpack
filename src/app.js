@@ -29,10 +29,11 @@ import uiRouter from 'angular-ui-router';
 import homeController from 'home/home';
 //import './directives-module';
 import './components'
+import './services'
 //import todoFactory from 'factories/todo-factory';
 //import todosController from 'todos/todos';
 
-const app = angular.module('app', [uiRouter, 'app.directivesModule']);
+const app = angular.module('app', [uiRouter, 'app.directivesModule', 'app.services']);
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $urlRouterProvider.otherwise('/');

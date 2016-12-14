@@ -39,7 +39,7 @@ module.exports = {
   },
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
   resolve: {
-    modulesDirectories: ['node_modules', 'src'],
+    modulesDirectories: ['node_modules', 'src', 'server'],
     extensions: ['', '.json', '.js', '.jsx', '.css', '.scss', '.png', '.svg', '.jpg', '.jpeg']
   },
 };

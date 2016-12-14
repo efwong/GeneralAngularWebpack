@@ -36,6 +36,7 @@
     "angular": "^1.6.0",
     "angular-ui-router": "^0.3.2",
     "babel-runtime": "^5.8.24",
+    "body-parser": "^1.15.2",
     "normalize.css": "^3.0.3"
   }
 }

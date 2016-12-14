@@ -1,18 +1,16 @@
 import angular from 'angular';
+import User from '../../models/user'
 
-// .directive('userForm', [function(){
-  let controller = ['$scope', function($scope){
-
-  }];
-//   return{
-//     restrict: 'E',
-//     controller: controller,
-//     scope: {
-//     },
-//     template: '<div>userform</div>'
-//   }
-// }]);
-
+let controller = ['$scope', 'submitService', function($scope, submitService){
+  $scope.fname = "";
+  $scope.lname = "";
+  $scope.address = "";
+  $scope.submitForm = () => {
+    const user = new User($scope.fname, $scope.lname, $scope.address);
+    submitService.submitForm(user)
+  };
+}];
+const template = require('./user-form.html');
 let userForm= {
   // bindings: {
   //   user: '='
@@ -21,8 +19,7 @@ let userForm= {
 
   },
   controller: controller,
-  template: '<div>userform</div>'
-  //templateUrl: 'components/userform/user-form.html'
+  template: template
 };
 
 export default userForm;
