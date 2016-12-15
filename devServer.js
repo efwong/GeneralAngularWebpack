@@ -16,15 +16,16 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/index.html'));
-});
 
 
 // setup routes
 app.use(bodyParser.json());
-//app.use('/', routes);
 loadRoutes(app);
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/index.html'));
+});
 
 // setup public directory
 app.use('/public', express.static('public'));
