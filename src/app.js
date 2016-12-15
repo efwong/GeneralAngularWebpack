@@ -1,8 +1,8 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import homeController from 'home/home';
-import './components'
-import './services'
+import homeController from 'areas/home/home';
+import './components';
+import './services';
 
 const app = angular.module('app', [uiRouter, 'app.directivesModule', 'app.services']);
 
@@ -13,7 +13,7 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $stateProvider
         .state('home', {
             url: '/',
-            template: require('home/home.html'),
+            template: require('areas/home/home.html'),
             controller: homeController
         });
 

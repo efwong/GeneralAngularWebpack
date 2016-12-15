@@ -10,7 +10,6 @@ const bodyParser = require('body-parser')
 const loadRoutes = require('./server/routes');
 const app = express();
 const compiler = webpack(config);
-
 const PORT = process.env.PORT || 3020;
 
 // load webpack middleware

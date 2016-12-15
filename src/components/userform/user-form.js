@@ -14,7 +14,7 @@ let controller = ['$scope', 'usersService', function($scope, usersService){
   };
 }];
 
-const userForm =[function(){
+const userForm = [function(){
   return{
     restrict: 'E',
     scope:{

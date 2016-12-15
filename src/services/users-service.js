@@ -2,7 +2,6 @@ const usersService = ['$http', function($http){
 
   // Submit a new user
   this.create = (user) => {
-    console.log(user);
     $http({
       url: '/users',
       method: "POST",

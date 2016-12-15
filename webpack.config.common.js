@@ -28,13 +28,7 @@ module.exports = {
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.s?css$/, loader: 'style!css?importLoaders=2&sourceMap!postcss-loader?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
-      { test: /\.html$/, loader: 'html-loader' },
-      { test: /\.(png|svg|jpg|jpeg)$/, loader: 'url-loader',
-        query: {
-          limit: 8192,
-          name: 'images/[name].[ext]'
-        }     
-      }
+      { test: /\.html$/, loader: 'html-loader' }
     ]
   },
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
